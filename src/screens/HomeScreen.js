@@ -1,10 +1,9 @@
 import React from 'react';
 import { Text, StyleSheet, View, Button } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const HomeScreen = () => {
-  const handlePressEvent = () => {
-    console.log('clicked!')
+const HomeScreen = ({ navigation }) => {
+  const handlePressEvent = (e, path) => {
+    navigation.navigate(path)
   }
 
   return (
@@ -12,15 +11,16 @@ const HomeScreen = () => {
       <Text style={styles.text}>HomeScreen</Text>
       <Button
         title="Go to Components Demo"
-        onPress={handlePressEvent}
+        onPress={e => handlePressEvent(e, 'Components')}
       />
       <Button
         title="Go to List Demo"
-        onPress={handlePressEvent}
+        onPress={e => handlePressEvent(e, 'List')}
       />
-      <TouchableOpacity onPress={handlePressEvent}>
-        <Text>Go to List Demo</Text>
-      </TouchableOpacity>
+      <Button
+        title="Go to Image Demo"
+        onPress={e => handlePressEvent(e, 'Images')}
+      />
     </View>
   )
 };
